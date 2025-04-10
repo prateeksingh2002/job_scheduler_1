@@ -24,13 +24,13 @@ public class JobService {
     public void scheduleJob(JobEntity job) {
         jobRepository.save(job);
         if (job.getJobType() == JobType.IMMEDIATE) {
-//            jobScheduler.runJobImmediately(job);
-            try {
-                jobScheduler.runJobImmediately(job.getJobName(), job.getJarFileName());
-            } catch (Exception e) {
-                e.printStackTrace(); // or use a logger
-                throw new RuntimeException("Job execution failed", e); // optional
-            }
+            jobScheduler.runJobImmediately(job);
+//            try {
+//                jobScheduler.runJobImmediately(job.getJobName(), job.getJarFileName());
+//            } catch (Exception e) {
+//                e.printStackTrace(); // or use a logger
+//                throw new RuntimeException("Job execution failed", e); // optional
+//            }
         } else if (job.getJobType() == JobType.RECURRING) {
             jobScheduler.scheduleRecurring(job);
         } else {
