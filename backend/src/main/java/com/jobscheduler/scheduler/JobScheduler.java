@@ -56,20 +56,6 @@ public class JobScheduler {
         }
     }
 
-//    public void runJobImmediately(JobEntity job) {
-//        try {
-//            Scheduler scheduler = schedulerFactoryBean.getScheduler();
-//            JobDetail jobDetail = JobBuilder.newJob(RunnableJob.class)
-//                    .withIdentity("immediateJob" + job.getId(), "group1")
-//                    .usingJobData("jarFileName", job.getJarFileName())
-//                    .build();
-//
-//            scheduler.triggerJob(jobDetail.getKey(), jobDetail.getJobDataMap());
-//        } catch (SchedulerException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
     public void runJobImmediately(JobEntity job) {
         try {
             Scheduler scheduler = schedulerFactoryBean.getScheduler();
